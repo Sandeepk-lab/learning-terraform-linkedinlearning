@@ -24,9 +24,8 @@ resource "aws_instance" "blog" {
   }
 }
 
-resource "aws_vpc" "default" {
-  description = "default vpc"
-}
+resource "aws_vpc" "default" {}
+
 
 resource "aws_security_group" "first_security_group"{
 
