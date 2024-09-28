@@ -17,17 +17,22 @@ data "aws_ami" "app_ami" {
 resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
+  vpc_security_group_ids=aws_security_group.first_security_group
 
   tags = {
     Name = "HelloWorld"
   }
 }
 
+resource "aws_vpc" "default" {
+  description = "default vpc"
+}
+
 resource "aws_security_group" "first_security_group"{
 
   name        = "allow HTTPS"
   description = "Allow HTTPS inbound traffic"
-  vpc_id      = "${aws_vpc.main.id}"
+   vpc_id = aws_vpc.default.id
   
   ingress {
     description = "allow HTTPS traffic"
