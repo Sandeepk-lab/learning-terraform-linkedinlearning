@@ -20,7 +20,7 @@ resource "aws_instance" "blog" {
   vpc_security_group_ids= [aws_security_group.first_security_group.id]
 
   tags = {
-    Name = "HelloWorld"
+    Name = "EC2INSTANCE2"
   }
 }
 
