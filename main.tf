@@ -1,4 +1,4 @@
-data "aws_ami" "app_ami2" {
+data "aws_ami" "app_ami" {
   most_recent = true
 
   filter {
@@ -15,7 +15,7 @@ data "aws_ami" "app_ami2" {
 }
 
 resource "aws_instance" "blog2" {
-  ami           = data.aws_ami.app_ami2.id
+  ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
   vpc_security_group_ids= [aws_security_group.first_security_group.id]
 
