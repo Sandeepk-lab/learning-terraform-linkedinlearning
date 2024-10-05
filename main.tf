@@ -22,6 +22,9 @@ resource "aws_instance" "blog2" {
   tags = {
     Name = "EC2INSTANCE2"
   }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_vpc" "default" {}
@@ -54,8 +57,6 @@ resource "aws_security_group" "first_security_group"{
 
 }
 
-lifecycle {
-    create_before_destroy = true
-}
+
 
 
