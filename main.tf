@@ -54,3 +54,8 @@ resource "aws_security_group" "first_security_group"{
 
 }
 
+  lifecycle {
+   create_before_destroy = true
+  }
+
+
