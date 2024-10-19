@@ -42,7 +42,7 @@ resource "aws_security_group" "first_security_group"{
     description = "allow HTTPS traffic"
     from_port   = 80
     to_port     = 80
-    protocol    = ["https"]
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
