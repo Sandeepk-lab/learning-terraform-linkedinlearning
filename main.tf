@@ -27,7 +27,9 @@ resource "aws_instance" "blog2" {
   }
 }
 
-resource "aws_vpc" "default" {}
+resource "aws_vpc" "default" {
+  cidr_block = "10.0.0.0/16"
+}
 
 
 resource "aws_security_group" "first_security_group"{
