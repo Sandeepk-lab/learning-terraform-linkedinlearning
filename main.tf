@@ -57,7 +57,7 @@ resource "aws_vpc" "default" {
     #Name = "allow_tls"
   #}
 
-}
+#}
 
 
 
