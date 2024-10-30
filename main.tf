@@ -32,30 +32,30 @@ resource "aws_vpc" "default" {
 }
 
 
-resource "aws_security_group" "first_security_group"{
+#resource "aws_security_group" "first_security_group"{
 
-  name        = "allow HTTPS"
-  description = "Allow HTTPS inbound traffic"
-  vpc_id = aws_vpc.default.id
+  #name        = "allow HTTPS"
+  #description = "Allow HTTPS inbound traffic"
+  #vpc_id = aws_vpc.default.id
   
-  ingress {
-    description = "allow HTTPS traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  #ingress {
+    #description = "allow HTTPS traffic"
+    #from_port   = 0
+    #to_port     = 0
+    #protocol    = "-1"
+    #cidr_blocks = ["0.0.0.0/0"]
+  #}
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  #egress {
+    #from_port   = 0
+    #to_port     = 0
+    #protocol    = "-1"
+    #cidr_blocks = ["0.0.0.0/0"]
+  #}
 
-  tags = {
-    Name = "allow_tls"
-  }
+  #tags = {
+    #Name = "allow_tls"
+  #}
 
 }
 
