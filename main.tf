@@ -17,8 +17,7 @@ data "aws_ami" "app_ami" {
 resource "aws_instance" "blog2" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-  VPC_ID        = vpc-0237c2f90d23fcdeb
-  #vpc_security_group_ids= [aws_security_group.first_security_group.id]
+  vpc_security_group_ids= [aws_security_group.security_group_2.id]
 
   tags = {
     Name = "EC2INSTANCE2"
@@ -28,37 +27,37 @@ resource "aws_instance" "blog2" {
   }
 }
 
-#resource "aws_vpc" "default" {
-  #cidr_block = "10.2.0.0/16"
-#}
+resource "aws_vpc" "First_Default_VPC" {
+  cidr_block = "10.2.0.0/16"
+}
 
 
-#resource "aws_security_group" "first_security_group"{
+resource "aws_security_group" "security_group_2"{
 
-  #name        = "allow HTTPS"
-  #description = "Allow HTTPS inbound traffic"
-  #vpc_id = aws_vpc.default.id
+  name        = "allow HTTPS"
+  description = "Allow HTTPS inbound traffic"
+  vpc_id = aws_vpc.First_Default_VPC.id
   
-  #ingress {
-    #description = "allow HTTPS traffic"
-    #from_port   = 0
-    #to_port     = 0
-    #protocol    = "-1"
-    #cidr_blocks = ["0.0.0.0/0"]
-  #}
+  ingress {
+    description = "allow HTTPS traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-  #egress {
-    #from_port   = 0
-    #to_port     = 0
-    #protocol    = "-1"
-    #cidr_blocks = ["0.0.0.0/0"]
-  #}
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-  #tags = {
-    #Name = "allow_tls"
-  #}
+  tags = {
+    Name = "allow_tls"
+  }
 
-#}
+}
 
 
 
