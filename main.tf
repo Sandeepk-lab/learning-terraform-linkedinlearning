@@ -17,6 +17,7 @@ data "aws_ami" "app_ami" {
 resource "aws_instance" "blog2" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
+  VPC_ID        = vpc-0237c2f90d23fcdeb
   #vpc_security_group_ids= [aws_security_group.first_security_group.id]
 
   tags = {
@@ -27,9 +28,9 @@ resource "aws_instance" "blog2" {
   }
 }
 
-resource "aws_vpc" "default" {
-  cidr_block = "10.2.0.0/16"
-}
+#resource "aws_vpc" "default" {
+  #cidr_block = "10.2.0.0/16"
+#}
 
 
 #resource "aws_security_group" "first_security_group"{
