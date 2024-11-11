@@ -3,6 +3,16 @@ variable "instance_type" {
   default     = "t3.nano"
 }
 
-variable "subnet_id" {}
+variable "subnet" {
+type        = string
+ description = "Subnet ID for network interface"
+ default     = "subnet-07acc523071905f13"
+}
 
-variable "vpc_id" {}
+variable "vpc" {
+type        = string
+ description = "Subnet ID for network interface"
+ default     = "subnet-07acc523071905f13"
+}
+
+
