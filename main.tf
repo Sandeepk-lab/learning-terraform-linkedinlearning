@@ -14,10 +14,18 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
+data "aws_vpc" "First_Default_VPC" {
+  id = var.vpc_id
+}
+
+data "aws_subnet" "Subnet_First_Default_VPC" {
+  id = var.subnet_id
+}
+
 resource "aws_instance" "blog2" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-  vpc_id = aws_vpc.First_Default_VPC.id
+  subnet_id     = data.aws_subnet.Subnet_First_Default_VPC.id
   vpc_security_group_ids= [aws_security_group.security_group_2.id]
 
   tags = {
@@ -28,16 +36,12 @@ resource "aws_instance" "blog2" {
   }
 }
 
-resource "aws_vpc" "First_Default_VPC" {
-  cidr_block = "10.2.0.0/16"
-}
-
 
 resource "aws_security_group" "security_group_2"{
 
   name        = "allow HTTPS"
   description = "Allow HTTPS inbound traffic"
-  vpc_id = aws_vpc.First_Default_VPC.id
+  vpc_id = data.aws_vpc.First_Default_VPC.id
   
   ingress {
     description = "allow HTTPS traffic"
