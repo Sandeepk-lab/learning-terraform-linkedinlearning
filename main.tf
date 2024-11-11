@@ -17,6 +17,7 @@ data "aws_ami" "app_ami" {
 resource "aws_instance" "blog2" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
+  vpc_id = aws_vpc.First_Default_VPC.id
   vpc_security_group_ids= [aws_security_group.security_group_2.id]
 
   tags = {
