@@ -15,11 +15,11 @@ data "aws_ami" "app_ami" {
 }
 
 data "aws_vpc" "First_Default_VPC" {
-  id = var.vpc_id
+  id = var.vpc
 }
 
 data "aws_subnet" "Subnet_First_Default_VPC" {
-  id = var.subnet_id
+  id = var.subnet
 }
 
 resource "aws_instance" "blog2" {

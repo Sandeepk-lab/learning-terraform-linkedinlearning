@@ -11,8 +11,8 @@ type        = string
 
 variable "vpc" {
 type        = string
- description = "Subnet ID for network interface"
- default     = "subnet-07acc523071905f13"
+ description = "VPC ID for network interface"
+ default     = "vpc-0cbbac39d656efd39"
 }
 
 
