@@ -73,7 +73,8 @@ module "sg" {
   vpc_id      = data.aws_vpc.First_Default_VPC.id
 
   #ingress_rules            = ["https-443-tcp","http-80-tcp","http-8080-tcp","https-8443-tcp"]
-  ingress_rules            = ["http-80-tcp","http-8080-tcp"]
+  #ingress_rules            = ["http-80-tcp","http-8080-tcp"]
+   ingress_rules            = ["http-80-tcp"]
    egress_rules            = ["all-all"]
 }
 
