@@ -64,6 +64,18 @@ resource "aws_security_group" "security_group_2"{
 
 }
 
+module "sg" {
+  source  = "terraform-aws-modules/security-group/aws"
+  version = "5.2.0"
+  
+  name        = "user-service"
+  description = "Security group within VPC"
+  vpc_id      = data.aws_vpc.First_Default_VPC.id
+
+  ingress_rules            = [https-443-tcp,http-80-tcp,http-8080-tcp,https-8443-tcp]
+   egress_rules            = [all-all]
+}
+
 
 
 
