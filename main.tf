@@ -26,7 +26,8 @@ resource "aws_instance" "blog2" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
   subnet_id     = data.aws_subnet.Subnet_First_Default_VPC.id
-  vpc_security_group_ids= [aws_security_group.security_group_2.id]
+  #vpc_security_group_ids= [aws_security_group.security_group_2.id]
+  vpc_security_group_ids= [module.sg.security_group_id]
 
   tags = {
     Name = "EC2INSTANCE2"
@@ -37,32 +38,32 @@ resource "aws_instance" "blog2" {
 }
 
 
-resource "aws_security_group" "security_group_2"{
+#resource "aws_security_group" "security_group_2"{
 
-  name        = "allow HTTPS"
-  description = "Allow HTTPS inbound traffic"
-  vpc_id = data.aws_vpc.First_Default_VPC.id
+  #name        = "allow HTTPS"
+  #description = "Allow HTTPS inbound traffic"
+  #vpc_id = data.aws_vpc.First_Default_VPC.id
   
-  ingress {
-    description = "allow HTTPS traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  #ingress {
+    #description = "allow HTTPS traffic"
+    #from_port   = 0
+    #to_port     = 0
+    #protocol    = "-1"
+    #cidr_blocks = ["0.0.0.0/0"]
+  #}
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  #egress {
+    #from_port   = 0
+    #to_port     = 0
+    #protocol    = "-1"
+    #cidr_blocks = ["0.0.0.0/0"]
+  #}
 
-  tags = {
-    Name = "allow_tls"
-  }
+  #tags = {
+    #Name = "allow_tls"
+  #}
 
-}
+#}
 
 module "sg" {
   source  = "terraform-aws-modules/security-group/aws"
