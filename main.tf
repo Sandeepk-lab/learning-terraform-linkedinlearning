@@ -75,8 +75,8 @@ module "sg" {
   #ingress_rules            = ["https-443-tcp","http-80-tcp","http-8080-tcp","https-8443-tcp"]
   #ingress_rules            = ["http-80-tcp","http-8080-tcp"]
   # ingress_rules            = ["http-80-tcp"]
-  ingress_cidr_blocks      = ["10.10.0.0/16"]
-  ingress_rules            = ["https-443-tcp"]
+  ingress_cidr_blocks      = ["0.0.0.0/0"]
+  ingress_rules            = ["https-443-tcp","http-80-tcp"]
    egress_rules            = ["all-all"]
 }
 
